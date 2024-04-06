@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Cole Dotys Weight Tracker</string>
+    <string name="login_textView_1">Welcome!</string>
+    <string name="login_textView_2">Please log in to continue or sign up as new user</string>
+    <string name="login_button">Login</string>
+    <string name="create_button">Create Account</string>
+    <string name="action_add">Add</string>
+    <string name="title_weight_activity">Daily Weights Log</string>
+    <string name="button_change_target_weight">Change target weight</string>
+    <string name="goal_text">TARGET WEIGHT: </string>
+    <string name="default_goal_weight">Default is 150.0 lbs</string>
+    <string name="add_popup_title">Enter New Weight Record</string>
+    <string name="change_title">Change Weight Record</string>
+    <string name="targetWeight_popup_title">Change Target Weight</string>
+    <string name="permissions_popup_title">Permissions Request</string>
+    <string name="permissions_popup_question">Can Weight Tracker access your messages app and send you SMS messages?</string>
+    <string name="user_create_success">New user account successfully added</string>
+    <string name="user_create_fail">Please enter valid username and password</string>
+    <string name="username_found">Username already exists</string>
+    <string name="login_failed">Login attempt failed</string>
+    <string name="change_record_prompt">PLEASE ENTER A DATE TO CHANGE</string>
+    <string name="delete_record_title">Delete a Record</string>
+    <string name="delete_record_prompt">PLEASE ENTER A DATE TO DELETE</string>
+    <string name="header_weight"><u>WEIGHT (LBS)</u></string>
+    <string name="header_date"><u>DATE</u></string>
+    <string name="date_hint">Date (MM/DD/YYYY)</string>
+    <string name="no_date">no weights to show...</string>
+    <string name="no_weight">Please add records with the above button</string>
+</resources>
