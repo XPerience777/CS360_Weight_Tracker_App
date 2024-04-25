@@ -51,19 +51,16 @@ public class LoginActivity extends AppCompatActivity {
         mWeightTrackerDb = WeightTrackerDatabase.getInstance(getApplicationContext());
         mUserDao = mWeightTrackerDb.userDao();
         mFeedback = (TextView) findViewById(R.id.feedbackTextView);
-        googleBtn = findViewById(R.id.googleBtn); //Google sign in button instance
+        googleBtn = findViewById(R.id.googleBtn);
+        gOptions = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestEmail().build();
+        gClient = GoogleSignIn.getClient(this, gOptions);
 
-        //Creates a new Google sign in request
-        gOptions = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestEmail().build(); //Creates a new Google sign in request
-        gClient = GoogleSignIn.getClient(this, gOptions); //
-
-        //Checks if the user is already signed in
         GoogleSignInAccount acct = GoogleSignIn.getLastSignedInAccount(this);
         if(acct!=null){
             changeToWeightActivity();
         }
 
-        // Listens for when the Google login button is pressed
+
         googleBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -73,13 +70,11 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
-    // If logged in will set the code to 1000
     void googleLogin(){
         Intent signInIntent = gClient.getSignInIntent();
         startActivityForResult(signInIntent,1000);
     }
 
-    // Checks if the user is logged in and changes the activity over to the Weight Activity while checking for exceptions
     @Override
     protected void onActivityResult(int requestCode, int resultCode,Intent data) {
         super.onActivityResult(requestCode, resultCode, data);

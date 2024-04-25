@@ -21,7 +21,7 @@
             android:layout_height="56dp"
             android:layout_weight="0"
             android:background="@color/blue"
-            android:title="Daily Weights"
+            android:title="@string/title_weight_activity"
             android:titleTextColor="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -55,17 +55,6 @@
                 android:background="@color/blue"
                 android:onClick="addRecordOnClick"
                 android:paddingRight="15dp"
-                app:srcCompat="@drawable/add_big" />
-
-            <Button
-                android:id="@+id/logout"
-                android:layout_width="100dp"
-                android:layout_height="match_parent"
-                android:layout_gravity="end"
-                android:background="@color/blue"
-                android:onClick="logoutOnClick"
-                android:paddingRight="15dp"
-                android:text="logout"
                 app:srcCompat="@drawable/add_big" />
         </Toolbar>
 

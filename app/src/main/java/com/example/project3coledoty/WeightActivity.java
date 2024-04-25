@@ -1,6 +1,5 @@
 package com.example.project3coledoty;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
@@ -14,7 +13,6 @@ import android.telephony.SmsManager;
 import android.telephony.TelephonyManager;
 import android.view.Gravity;
 import android.view.View;
-import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.TableLayout;
 import android.widget.TableRow;
@@ -27,13 +25,6 @@ import com.example.project3coledoty.database.WeightTrackerDatabase;
 import com.example.project3coledoty.model.DailyWeight;
 import com.example.project3coledoty.model.GoalWeight;
 import com.example.project3coledoty.model.User;
-import com.google.android.gms.auth.api.signin.GoogleSignIn;
-import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
-import com.google.android.gms.auth.api.signin.GoogleSignInClient;
-import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
-import com.google.android.gms.common.api.ApiException;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -58,10 +49,6 @@ public class WeightActivity extends AppCompatActivity {
     TableLayout mTableLayout;
     TextView mTargetWeight;
     TableRow mNoRecordsRow;
-    TextView userName;
-    Button logout;
-    GoogleSignInClient gClient;
-    GoogleSignInOptions gOptions;
 
 
     @Override
@@ -70,8 +57,6 @@ public class WeightActivity extends AppCompatActivity {
         try {
             super.onCreate(savedInstanceState);
             this.getSupportActionBar().hide();
-            gOptions = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestEmail().build();
-            gClient = GoogleSignIn.getClient(this, gOptions);
             setContentView(R.layout.activity_weight);
 
             mTableLayout = (TableLayout)findViewById(R.id.dailyWeightTable);
@@ -92,21 +77,10 @@ public class WeightActivity extends AppCompatActivity {
 
             // check for granted permissions, ask user for permissions if need be
             checkForAllPermissions();
-
         }
         catch (Exception e) {
             e.printStackTrace();
         }
-
-
-    }
-
-    //Changes back to the login screen
-    public void changeToLoginActivity() {
-        finish();
-        Intent intent = new Intent(this, LoginActivity.class);
-        intent.putExtra("user", mUser);
-        startActivity(intent);
     }
 
 
@@ -371,22 +345,6 @@ public class WeightActivity extends AppCompatActivity {
             Intent intent = new Intent(this, ChangeTargetActivity.class);
             intent.putExtra("user", mUser);
             startActivityForResult(intent, LAUNCH_CHANGE_TARGET_ACTIVITY);
-
-        }catch (Exception e) {
-            e.printStackTrace();
-        }
-
-    }
-
-    //When clicked the google client will be logged out and will swap to login screen
-    public void logoutOnClick(View view) {
-        try {
-            gClient.signOut().addOnCompleteListener(new OnCompleteListener<Void>() {
-                @Override
-                public void onComplete(@NonNull Task<Void> task) {
-                    changeToLoginActivity();
-                }
-            });
 
         }catch (Exception e) {
             e.printStackTrace();
